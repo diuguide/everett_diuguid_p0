@@ -30,7 +30,7 @@ public class RegisterScreen extends Screen{
             System.out.print("Password: ");
             password = consoleReader.readLine();
 
-            NewUser newUser = new NewUser(String firstName, String lastName, String username, String password);
+            NewUser newUser = new NewUser(firstName, lastName, username, password);
         } catch (Exception e) {
 
             e.printStackTrace();
