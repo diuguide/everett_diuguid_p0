@@ -20,6 +20,22 @@ public class WelcomeScreen extends Screen {
             System.out.print(">>>> ");
             choice = consoleReader.readLine();
 
+            switch (choice) {
+                case "1": {
+                    RegisterScreen registerScreen = new RegisterScreen(consoleReader);
+                    registerScreen.render();
+                    break;
+                }
+                case "2": {
+                    LoginScreen loginScreen = new LoginScreen(consoleReader);
+                    loginScreen.render();
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+
         } catch (Exception e) {
 
             e.printStackTrace();
