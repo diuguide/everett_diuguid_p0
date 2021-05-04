@@ -1,6 +1,6 @@
 package com.revature.project_0;
 
-import com.revature.project_0.screens.Welcome;
+import com.revature.project_0.screens.WelcomeScreen;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,7 +10,7 @@ public class Driver {
     public static void main(String[] args) {
 
             try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
-                Welcome welcome = new Welcome(consoleReader);
+                WelcomeScreen welcome = new WelcomeScreen(consoleReader);
                 welcome.render();
             } catch (Exception e) {
                 e.printStackTrace();

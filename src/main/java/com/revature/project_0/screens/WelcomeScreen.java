@@ -2,11 +2,11 @@ package com.revature.project_0.screens;
 
 import java.io.BufferedReader;
 
-public class Welcome {
+public class WelcomeScreen extends Screen {
 
     private BufferedReader consoleReader;
 
-    public Welcome(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
+    public WelcomeScreen(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
     public void render() {
         try {
 
