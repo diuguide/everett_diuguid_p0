@@ -13,7 +13,7 @@ public class LoginScreen extends Screen {
             String username;
             String password;
 
-            //Login Menu
+            //Login form
             System.out.println("Log into your account!");
             System.out.println("+---------------------+");
 
