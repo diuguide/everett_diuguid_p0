@@ -10,6 +10,7 @@ public class RegisterScreen extends Screen{
 
     public RegisterScreen(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
 
+    @Override
     public void render() {
         try {
 
