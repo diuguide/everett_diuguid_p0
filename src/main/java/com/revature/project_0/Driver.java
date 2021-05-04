@@ -10,7 +10,7 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        Connect newConnection = new Connect();
+
 
             try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
                 WelcomeScreen welcome = new WelcomeScreen(consoleReader);

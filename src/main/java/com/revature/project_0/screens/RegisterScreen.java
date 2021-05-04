@@ -35,8 +35,10 @@ public class RegisterScreen extends Screen{
 
             // Create new user object
             NewUser newUser = new NewUser(firstName, lastName, username, password);
-            // Pass to postgreSQL connection
-            AddUser addUser = new AddUser(newUser);
+            AddUser addUser = new AddUser(newUser, consoleReader);
+            addUser.insertRow();
+
+
         } catch (Exception e) {
 
             e.printStackTrace();
