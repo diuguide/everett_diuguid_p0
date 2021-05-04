@@ -23,6 +23,8 @@ public class LoginScreen extends Screen {
             System.out.print("Password: ");
             password = consoleReader.readLine();
 
+
+
         } catch (Exception e) {
 
             e.printStackTrace();
