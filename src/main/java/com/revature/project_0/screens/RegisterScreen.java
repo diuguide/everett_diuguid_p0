@@ -1,5 +1,7 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.database.AddUser;
+import com.revature.project_0.database.Connect;
 import com.revature.project_0.models.NewUser;
 
 import java.io.BufferedReader;
@@ -33,7 +35,8 @@ public class RegisterScreen extends Screen{
 
             // Create new user object
             NewUser newUser = new NewUser(firstName, lastName, username, password);
-
+            // Pass to postgreSQL connection
+            AddUser addUser = new AddUser(newUser);
         } catch (Exception e) {
 
             e.printStackTrace();
