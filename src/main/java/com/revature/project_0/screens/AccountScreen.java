@@ -1,14 +1,20 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.util.ScreenRouter;
+
 import java.io.BufferedReader;
 
 public class AccountScreen extends Screen{
 
     private BufferedReader consoleReader;
+    private ScreenRouter router;
 
-    public AccountScreen(BufferedReader consoleReader) {
-        super("AccountScreen", "account");
-        this.consoleReader = consoleReader; }
+    public AccountScreen(BufferedReader consoleReader, ScreenRouter router) {
+        super("AccountScreen", "/account");
+        this.consoleReader = consoleReader;
+        this.router = router;
+    }
+
 
     @Override
     public void render() {

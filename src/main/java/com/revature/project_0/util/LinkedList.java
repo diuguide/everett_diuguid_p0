@@ -26,26 +26,6 @@ public class LinkedList<T> implements List<T>{
     }
 
     @Override
-    public T pop() {
-
-        if(head == null) {
-            return null;
-        }
-        T soughtData = head.data;
-        head = head.nextNode;
-
-        if (head != null) {
-            head.prevNode = null;
-        } else {
-            tail = null;
-        }
-
-        size--;
-
-        return soughtData;
-    }
-
-    @Override
     public T get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("The index does not exist");

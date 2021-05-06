@@ -1,14 +1,18 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.util.ScreenRouter;
+
 import java.io.BufferedReader;
 
 public class TransactionScreen extends Screen{
 
     private BufferedReader consoleReader;
+    private ScreenRouter router;
 
-    public TransactionScreen(BufferedReader consoleReader) {
-        super("TransactionScreen", "transaction");
+    public TransactionScreen(BufferedReader consoleReader, ScreenRouter router) {
+        super("TransactionScreen", "/transaction");
         this.consoleReader = consoleReader;
+        this.router = router;
     }
 
     @Override
