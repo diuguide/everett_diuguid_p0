@@ -1,8 +1,6 @@
 package com.revature.project_0.util;
 
-import com.revature.project_0.screens.LoginScreen;
-import com.revature.project_0.screens.RegisterScreen;
-import com.revature.project_0.screens.WelcomeScreen;
+import com.revature.project_0.screens.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -25,7 +23,9 @@ public class AppState {
         router = new ScreenRouter();
         router.addScreen(new WelcomeScreen(consoleReader, router))
                 .addScreen(new LoginScreen(consoleReader))
-                .addScreen(new RegisterScreen(consoleReader));
+                .addScreen(new RegisterScreen(consoleReader))
+               .addScreen(new AccountScreen(consoleReader, router))
+                .addScreen(new TransactionScreen(consoleReader, router));
 
         System.out.println("Application started");
     }
