@@ -33,11 +33,11 @@ public class WelcomeScreen extends Screen {
 
             switch (choice) {
                 case "1": {
-                    router.navigate("/RegisterScreen");
+                    router.navigate("/register");
                     break;
                 }
                 case "2": {
-                    router.navigate("/LoginScreen");
+                    router.navigate("/login");
                     break;
                 }
                 case "3": {

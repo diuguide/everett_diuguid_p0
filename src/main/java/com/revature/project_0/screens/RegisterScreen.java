@@ -11,7 +11,7 @@ public class RegisterScreen extends Screen{
     private BufferedReader consoleReader;
 
     public RegisterScreen(BufferedReader consoleReader) {
-        super("RegisterScreen", "/RegisterScreen");
+        super("RegisterScreen", "/register");
         this.consoleReader = consoleReader; }
 
     @Override

@@ -14,9 +14,14 @@ public class AppState {
     private boolean appRunning;
 
     public AppState() {
+
+        // Sets appState
         appRunning = true;
+
+        // Initializes console reader to be used throughout all screens
         consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
+        // Initialize screen router
         router = new ScreenRouter();
         router.addScreen(new WelcomeScreen(consoleReader, router))
                 .addScreen(new LoginScreen(consoleReader))

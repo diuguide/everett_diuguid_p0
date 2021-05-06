@@ -9,6 +9,7 @@ public class LoginScreen extends Screen {
     public LoginScreen(BufferedReader consoleReader) {
         super("LoginScreen", "login");
         this.consoleReader = consoleReader; }
+
     public void render() {
         try {
 
