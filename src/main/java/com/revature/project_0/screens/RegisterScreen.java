@@ -1,18 +1,21 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.database.AddUser;
-import com.revature.project_0.database.Connect;
 import com.revature.project_0.models.NewUser;
+import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
 
 public class RegisterScreen extends Screen{
 
     private BufferedReader consoleReader;
+    private ScreenRouter router;
 
-    public RegisterScreen(BufferedReader consoleReader) {
+    public RegisterScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("RegisterScreen", "/register");
-        this.consoleReader = consoleReader; }
+        this.consoleReader = consoleReader;
+        this.router = router;
+    }
 
     @Override
     public void render() {
@@ -36,10 +39,14 @@ public class RegisterScreen extends Screen{
             password = consoleReader.readLine();
 
             // Create new user object
-            NewUser newUser = new NewUser(firstName, lastName, username, password);
-            AddUser addUser = new AddUser(newUser, consoleReader);
-            addUser.insertRow();
-
+            if (firstName != null && lastName != null && username != null && password != null) {
+                NewUser newUser = new NewUser(firstName, lastName, username, password);
+                AddUser addUser = new AddUser(newUser);
+                addUser.insertRow();
+                router.navigate("/login");
+            } else {
+                System.out.println("Please enter all fields");
+            }
 
         } catch (Exception e) {
 
