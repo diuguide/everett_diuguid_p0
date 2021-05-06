@@ -1,5 +1,8 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.auth.LoginAuth;
+import com.revature.project_0.models.ActiveUser;
+
 import java.io.BufferedReader;
 
 public class LoginScreen extends Screen {
@@ -26,6 +29,8 @@ public class LoginScreen extends Screen {
             System.out.print("Password: ");
             password = consoleReader.readLine();
 
+            ActiveUser activeUser = new ActiveUser(username, password);
+            LoginAuth loginAuth = new LoginAuth(activeUser);
 
 
 
