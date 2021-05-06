@@ -1,12 +1,22 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.util.ScreenRouter;
+
+
 import java.io.BufferedReader;
+
+import static com.revature.project_0.Driver.app;
 
 public class WelcomeScreen extends Screen {
 
     private BufferedReader consoleReader;
+    private ScreenRouter router;
 
-    public WelcomeScreen(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
+    public WelcomeScreen(BufferedReader consoleReader, ScreenRouter router) {
+        super("WelcomeScreen", "/WelcomeScreen");
+        this.consoleReader = consoleReader;
+        this.router = router;
+    }
     public void render() {
         try {
 
@@ -17,19 +27,21 @@ public class WelcomeScreen extends Screen {
             System.out.println("+---------------------------------------------+");
             System.out.println("1) Register New Account");
             System.out.println("2) Login");
+            System.out.println("3) Exit application");
             System.out.print(">>>> ");
             choice = consoleReader.readLine();
 
             switch (choice) {
                 case "1": {
-                    RegisterScreen registerScreen = new RegisterScreen(consoleReader);
-                    registerScreen.render();
+                    router.navigate("/RegisterScreen");
                     break;
                 }
                 case "2": {
-                    LoginScreen loginScreen = new LoginScreen(consoleReader);
-                    loginScreen.render();
+                    router.navigate("/LoginScreen");
                     break;
+                }
+                case "3": {
+                    app().setAppRunning(false);
                 }
                 default: {
                     break;

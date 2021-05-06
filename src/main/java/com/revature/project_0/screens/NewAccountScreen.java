@@ -6,7 +6,9 @@ public class NewAccountScreen extends Screen{
 
     private BufferedReader consoleReader;
 
-    public NewAccountScreen(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
+    public NewAccountScreen(BufferedReader consoleReader) {
+        super("NewAccountScreen", "newAccount");
+        this.consoleReader = consoleReader; }
 
     @Override
     public void render() {

@@ -6,7 +6,9 @@ public class AccountScreen extends Screen{
 
     private BufferedReader consoleReader;
 
-    public AccountScreen(BufferedReader consoleReader) { this.consoleReader = consoleReader; }
+    public AccountScreen(BufferedReader consoleReader) {
+        super("AccountScreen", "account");
+        this.consoleReader = consoleReader; }
 
     @Override
     public void render() {
@@ -26,13 +28,10 @@ public class AccountScreen extends Screen{
 
             switch (choice) {
                 case "1": {
-                    NewAccountScreen newAccountScreen = new NewAccountScreen(consoleReader);
-                    newAccountScreen.render();
+
                     break;
                 }
                 case "2": {
-                    TransactionScreen transactionScreen = new TransactionScreen();
-                    transactionScreen.render();
                     break;
                 }
                 case "3": {
@@ -47,8 +46,6 @@ public class AccountScreen extends Screen{
                 }
                 case "5": {
                     System.out.println("You have been Logged Out!");
-                    WelcomeScreen welcomeScreen = new WelcomeScreen(consoleReader);
-                    welcomeScreen.render();
                 }
 
             }
