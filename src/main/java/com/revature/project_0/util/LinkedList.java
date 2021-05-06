@@ -26,32 +26,12 @@ public class LinkedList<T> implements List<T>{
     }
 
     @Override
-    public T pop() {
-
-        if(head == null) {
-            return null;
-        }
-        T soughtData = head.data;
-        head = head.nextNode;
-
-        if (head != null) {
-            head.prevNode = null;
-        } else {
-            tail = null;
-        }
-
-        size--;
-
-        return soughtData;
-    }
-
-    @Override
     public T get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("The index does not exist");
         }
         Node<T> runner = head;
-        for (int i = 0; i < size - 1; i++ ) {
+        for (int i = 0; i < size; i++ ) {
             if (i == index) {
                 return runner.data;
             }
@@ -69,7 +49,7 @@ public class LinkedList<T> implements List<T>{
 
         Node<T> runner = head;
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < size; i++) {
 
             if (data == runner.data) {
                 return true;
