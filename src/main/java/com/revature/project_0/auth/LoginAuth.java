@@ -10,15 +10,7 @@ import java.sql.SQLException;
 
 public class LoginAuth {
 
-    private String username;
-    private String password;
-
-    public LoginAuth(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public AppUser authenticateUser() {
+    public AppUser authenticateUser(String username, String password) {
 
         AppUser user = null;
 

@@ -1,8 +1,11 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.models.AppUser;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
+
+import static com.revature.project_0.Driver.app;
 
 public class AccountScreen extends Screen{
 
@@ -15,7 +18,6 @@ public class AccountScreen extends Screen{
         this.router = router;
     }
 
-
     @Override
     public void render() {
         try {
@@ -25,33 +27,28 @@ public class AccountScreen extends Screen{
             System.out.println("Account Options: ");
             System.out.println("+---------------+");
             System.out.println("1)Open New Account");
-            System.out.println("2)View Balance/Transactions");
-            System.out.println("3)Deposit");
-            System.out.println("4)Withdraw");
-            System.out.println("5)Logout");
+            System.out.println("2)View Balance, Deposit, Withdraw");
+            System.out.println("3)Exit Application");
             System.out.print(">>>>> ");
             choice = consoleReader.readLine();
 
             switch (choice) {
                 case "1": {
-
+                    router.navigate("/newAccount");
                     break;
                 }
                 case "2": {
+                    router.navigate("/transactions");
                     break;
                 }
                 case "3": {
-                    System.out.println("Enter Deposit Amount: ");
-                    System.out.print(">>>>> $ ");
-                    break;
-                }
-                case "4": {
-                    System.out.println("Enter Withdraw Amount: ");
-                    System.out.print(">>>>> $ ");
-                    break;
-                }
-                case "5": {
                     System.out.println("You have been Logged Out!");
+                    app().setAppRunning(false);
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid Entry");
+                    break;
                 }
 
             }

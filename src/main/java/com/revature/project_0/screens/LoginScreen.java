@@ -1,6 +1,7 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.auth.LoginAuth;
+import com.revature.project_0.models.AppUser;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -8,13 +9,11 @@ import java.io.BufferedReader;
 public class LoginScreen extends Screen {
 
     private BufferedReader consoleReader;
-    private ScreenRouter router;
+    private LoginAuth loginAuth = new LoginAuth();
 
-
-    public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {
+    public LoginScreen(BufferedReader consoleReader) {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
-        this.router = router;
     }
 
     public void render() {
@@ -34,11 +33,9 @@ public class LoginScreen extends Screen {
             password = consoleReader.readLine();
 
             if (username != null && password != null) {
-                LoginAuth loginAuth = new LoginAuth(username, password);
-                loginAuth.authenticateUser();
-                if (loginAuth != null) {
+                AppUser authenticatedUser = loginAuth.authenticateUser(username, password);
+                if (authenticatedUser != null) {
                     System.out.println("Login Successful!");
-                    router.navigate("/account");
                 } else {
                     System.out.println("Login Failed!");
                 }

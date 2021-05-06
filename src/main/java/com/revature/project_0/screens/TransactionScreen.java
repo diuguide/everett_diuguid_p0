@@ -10,7 +10,7 @@ public class TransactionScreen extends Screen{
     private ScreenRouter router;
 
     public TransactionScreen(BufferedReader consoleReader, ScreenRouter router) {
-        super("TransactionScreen", "/transaction");
+        super("TransactionScreen", "/transactions");
         this.consoleReader = consoleReader;
         this.router = router;
     }
