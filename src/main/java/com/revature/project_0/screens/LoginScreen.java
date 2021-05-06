@@ -1,7 +1,6 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.auth.LoginAuth;
-import com.revature.project_0.models.ActiveUser;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -34,8 +33,19 @@ public class LoginScreen extends Screen {
             System.out.print("Password: ");
             password = consoleReader.readLine();
 
-            ActiveUser activeUser = new ActiveUser(username, password);
-            LoginAuth loginAuth = new LoginAuth(activeUser);
+            if (username != null && password != null) {
+                LoginAuth loginAuth = new LoginAuth(username, password);
+                loginAuth.authenticateUser();
+                if (loginAuth != null) {
+                    System.out.println("Login Successful!");
+                    router.navigate("/account");
+                } else {
+                    System.out.println("Login Failed!");
+                }
+            } else {
+                System.out.println("Please complete all fields");
+            }
+
 
 
 

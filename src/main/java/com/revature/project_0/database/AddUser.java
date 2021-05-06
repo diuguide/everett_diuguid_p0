@@ -1,11 +1,7 @@
 package com.revature.project_0.database;
 
-import com.revature.project_0.models.NewUser;
-import com.revature.project_0.screens.LoginScreen;
-import com.revature.project_0.screens.RegisterScreen;
+import com.revature.project_0.models.AppUser;
 
-import java.io.BufferedReader;
-import java.nio.Buffer;
 import java.sql.*;
 
 public class AddUser {
@@ -15,7 +11,7 @@ public class AddUser {
      private String username;
      private String password;
 
-    public AddUser(NewUser newUser) {
+    public AddUser(AppUser newUser) {
         this.firstName = newUser.getFirstName();
         this.lastName = newUser.getLastName();
         this.username = newUser.getUsername();

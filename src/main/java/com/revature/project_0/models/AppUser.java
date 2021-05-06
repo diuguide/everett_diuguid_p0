@@ -1,6 +1,6 @@
 package com.revature.project_0.models;
 
-public class NewUser {
+public class AppUser {
 
     // NewUser login info
     private String firstName;
@@ -9,11 +9,15 @@ public class NewUser {
     private String password;
 
     // NewUser constructor
-    public NewUser(String firstName, String lastName, String username, String password) {
+    public AppUser(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+    }
+
+    public AppUser() {
+
     }
 
     public String getFirstName() {

@@ -1,7 +1,7 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.database.AddUser;
-import com.revature.project_0.models.NewUser;
+import com.revature.project_0.models.AppUser;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -40,7 +40,7 @@ public class RegisterScreen extends Screen{
 
             // Create new user object
             if (firstName != null && lastName != null && username != null && password != null) {
-                NewUser newUser = new NewUser(firstName, lastName, username, password);
+                AppUser newUser = new AppUser(firstName, lastName, username, password);
                 AddUser addUser = new AddUser(newUser);
                 addUser.insertRow();
                 router.navigate("/login");
