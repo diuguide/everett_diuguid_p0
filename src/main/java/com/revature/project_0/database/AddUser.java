@@ -14,10 +14,10 @@ import java.sql.Statement;
 public class AddUser {
 
      BufferedReader consoleReader;
-     String firstName;
-     String lastName;
-     String username;
-     String password;
+     private String firstName;
+     private String lastName;
+     private String username;
+     private String password;
 
     public AddUser(NewUser newUser, BufferedReader consoleReader) {
         this.firstName = newUser.getFirstName();
@@ -25,7 +25,6 @@ public class AddUser {
         this.username = newUser.getUsername();
         this.password = newUser.getPassword();
         this.consoleReader = consoleReader;
-
     }
     private static String generateInsert(String firstName, String lastName, String username, String password) {
         return "INSERT INTO users(firstname, lastname, username, password) " + "VALUES ('" + firstName + "','" + lastName + "','" + username + "','" + password + "')";
@@ -51,7 +50,6 @@ public class AddUser {
                 System.out.println("Add user failed, please try again!");
                 RegisterScreen registerScreen = new RegisterScreen(consoleReader);
                 registerScreen.render();
-
             }
 
         } catch (SQLException e) {
