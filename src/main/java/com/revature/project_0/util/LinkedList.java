@@ -51,7 +51,7 @@ public class LinkedList<T> implements List<T>{
             throw new IllegalArgumentException("The index does not exist");
         }
         Node<T> runner = head;
-        for (int i = 0; i < size; i++ ) {
+        for (int i = 0; i < size - 1; i++ ) {
             if (i == index) {
                 return runner.data;
             }
@@ -69,7 +69,7 @@ public class LinkedList<T> implements List<T>{
 
         Node<T> runner = head;
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size - 1; i++) {
 
             if (data == runner.data) {
                 return true;
