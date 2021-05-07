@@ -21,7 +21,7 @@ public class AddUser {
     public void insertRow() {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "INSERT INTO users(firstname, lastname, username, password) " + "VALUES (?,?,?,?)";
+            String sql = "INSERT INTO users(firstname, lastname, username, password) VALUES (?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);

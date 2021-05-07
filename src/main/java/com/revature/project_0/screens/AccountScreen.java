@@ -11,6 +11,7 @@ public class AccountScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private AppUser currentUser;
 
     public AccountScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("AccountScreen", "/account");
@@ -20,6 +21,8 @@ public class AccountScreen extends Screen{
 
     @Override
     public void render() {
+        currentUser = router.getCurrentUser();
+
         try {
             String choice;
 

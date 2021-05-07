@@ -7,6 +7,7 @@ public class ScreenRouter {
 
     // Initializes LinkedList to store active screens
     private LinkedList<Screen> screens = new LinkedList<>();
+    private AppUser currentUser;
 
     // Adds screen to LinkedList
     public ScreenRouter addScreen(Screen screen) {
@@ -23,6 +24,15 @@ public class ScreenRouter {
             }
         }
     }
+    public void setCurrentUser(AppUser user) {
+        currentUser = user;
+    }
 
+    public AppUser getCurrentUser() {
+        return currentUser;
+    }
+    public String getCurrentUsername() {
+        return currentUser.getUsername();
+    }
 
 }

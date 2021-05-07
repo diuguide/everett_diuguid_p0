@@ -22,7 +22,7 @@ public class AppState {
         // Initialize screen router
         router = new ScreenRouter();
         router.addScreen(new WelcomeScreen(consoleReader, router))
-                .addScreen(new LoginScreen(consoleReader))
+                .addScreen(new LoginScreen(consoleReader, router))
                 .addScreen(new RegisterScreen(consoleReader, router))
                 .addScreen(new AccountScreen(consoleReader, router))
                 .addScreen(new TransactionScreen(consoleReader, router))

@@ -10,10 +10,12 @@ public class LoginScreen extends Screen {
 
     private BufferedReader consoleReader;
     private LoginAuth loginAuth = new LoginAuth();
+    private ScreenRouter router;
 
-    public LoginScreen(BufferedReader consoleReader) {
+    public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
+        this.router = router;
     }
 
     public void render() {
@@ -36,6 +38,8 @@ public class LoginScreen extends Screen {
                 AppUser authenticatedUser = loginAuth.authenticateUser(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login Successful!");
+                    router.setCurrentUser(authenticatedUser);
+                    router.navigate("/account");
                 } else {
                     System.out.println("Login Failed!");
                 }
