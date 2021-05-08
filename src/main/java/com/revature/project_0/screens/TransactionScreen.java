@@ -24,7 +24,7 @@ public class TransactionScreen extends Screen{
 
         System.out.println("Transaction Screen");
         System.out.println("+-----------------+");
-        System.out.println("Balance: " + BankActions.getBalance(router.currentUser.getUserId()));
+        System.out.println("Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
         System.out.println("+-----------------+");
         System.out.println("1) Deposit");
         System.out.println("2) Withdraw");
@@ -35,20 +35,20 @@ public class TransactionScreen extends Screen{
 
             switch (choice) {
                 case "1": {
-                    System.out.print("Deposit amount: ");
+                    System.out.print("Deposit amount: $");
                     depositAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(depositAmt);
                     BankActions.deposit(dbl, router.currentUser.getUserId());
-                    System.out.println("New Balance: " + BankActions.getBalance(router.currentUser.getUserId()));
+                    System.out.println("New Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
                 }
                 case "2": {
-                    System.out.print("Withdraw amount: ");
+                    System.out.print("Withdraw amount: $");
                     withdrawAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(withdrawAmt);
                     BankActions.withdraw(dbl, router.currentUser.getUserId());
-                    System.out.println("New Balance: " + BankActions.getBalance(router.currentUser.getUserId()));
+                    System.out.println("New Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
                 }

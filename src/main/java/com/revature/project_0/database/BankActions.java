@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class BankActions {
-    static int balance;
+    static double balance;
     static LocalDateTime timeStamp = LocalDateTime.now();
     public static void createAccount(int userId) {
 
@@ -28,7 +28,7 @@ public class BankActions {
         }
     }
 
-    public static int getBalance(int userId) {
+    public static double getBalance(int userId) {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "select * from project0.accounts where user_id=?";
@@ -36,7 +36,7 @@ public class BankActions {
             pstmt.setInt(1, userId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                balance = rs.getInt("balance");
+                balance = rs.getDouble("balance");
             }
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
