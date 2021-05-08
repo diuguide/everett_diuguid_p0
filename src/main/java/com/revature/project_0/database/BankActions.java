@@ -4,10 +4,11 @@ import com.revature.project_0.database.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BankActions {
-
+    static int balance;
     public static void createAccount(int userId) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "INSERT INTO project0.accounts(user_id, type, balance) VALUES(?, ?, ?)";
@@ -20,11 +21,26 @@ public class BankActions {
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace()
+            e.printStackTrace();
         }
     }
 
-    public static void getBalance() {
+    public static int getBalance(int userId) {
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+            String sql = "select * from project0.accounts where user_id=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                balance = rs.getInt("balance");
+            }
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return balance;
 
     }
 }
