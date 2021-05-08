@@ -43,4 +43,22 @@ public class BankActions {
         return balance;
 
     }
+
+    public static double deposit(double depositAmt, int userId){
+        double newBalance = getBalance(userId) + depositAmt;
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+            String sql = "update project0.accounts set balance=? where user_id=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, newBalance);
+            pstmt.setInt(2, userId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newBalance;
+    }
 }

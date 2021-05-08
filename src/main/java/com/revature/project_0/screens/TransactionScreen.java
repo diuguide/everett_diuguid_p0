@@ -38,8 +38,8 @@ public class TransactionScreen extends Screen{
                     System.out.print("Deposit amount: ");
                     depositAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(depositAmt);
-
-                    System.out.println("Deposit amount: " + dbl);
+                    BankActions.deposit(dbl, router.currentUser.getUserId());
+                    System.out.println("New Balance: " + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
                 }
