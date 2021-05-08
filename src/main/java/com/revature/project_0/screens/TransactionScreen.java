@@ -2,7 +2,6 @@ package com.revature.project_0.screens;
 
 import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
-
 import java.io.BufferedReader;
 
 public class TransactionScreen extends Screen{
@@ -29,6 +28,7 @@ public class TransactionScreen extends Screen{
         System.out.println("+-----------------+");
         System.out.println("1) Deposit");
         System.out.println("2) Withdraw");
+        System.out.println("3) Back to Account screen");
         try {
             System.out.print(">>>>> ");
             choice = consoleReader.readLine();
@@ -47,9 +47,13 @@ public class TransactionScreen extends Screen{
                     System.out.print("Withdraw amount: ");
                     withdrawAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(withdrawAmt);
-                    System.out.println("withdraw ammount: " + dbl);
+                    BankActions.withdraw(dbl, router.currentUser.getUserId());
+                    System.out.println("New Balance: " + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
+                }
+                case "3": {
+                    router.navigate("/account");
                 }
 
             }
