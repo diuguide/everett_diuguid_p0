@@ -11,6 +11,7 @@ public class AddUser {
      private String username;
      private String password;
 
+
     public AddUser(AppUser newUser) {
         this.firstName = newUser.getFirstName();
         this.lastName = newUser.getLastName();
@@ -21,7 +22,7 @@ public class AddUser {
     public void insertRow() {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "INSERT INTO users(firstname, lastname, username, password) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO project0.users(first_name, last_name, username, password) VALUES (?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, firstName);
             pstmt.setString(2, lastName);

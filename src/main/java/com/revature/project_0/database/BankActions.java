@@ -1,4 +1,4 @@
-package com.revature.project_0.util;
+package com.revature.project_0.database;
 
 import com.revature.project_0.database.ConnectionFactory;
 
@@ -8,18 +8,23 @@ import java.sql.SQLException;
 
 public class BankActions {
 
-    public static void createAccount(String username) {
+    public static void createAccount(int userId) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-            String sql = "INSERT INTO accounts(username, balance) VALUES(?,?)";
+            String sql = "INSERT INTO project0.accounts(user_id, type, balance) VALUES(?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, username);
-            pstmt.setInt(2, 0);
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, "Checking");
+            pstmt.setInt(3, 0);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace()
         }
+    }
+
+    public static void getBalance() {
+
     }
 }

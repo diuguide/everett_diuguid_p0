@@ -1,6 +1,6 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.util.BankActions;
+import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -31,7 +31,7 @@ public class NewAccountScreen extends Screen{
 
             switch (choice) {
                 case "1": {
-                    BankActions.createAccount(router.getCurrentUsername());
+                    BankActions.createAccount(router.currentUser.getUserId());
                     System.out.println("Created checking account!");
                     router.navigate("/account");
                 }

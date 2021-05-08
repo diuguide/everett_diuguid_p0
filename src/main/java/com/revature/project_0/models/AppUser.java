@@ -7,6 +7,7 @@ public class AppUser {
     private String lastName;
     private String username;
     private String password;
+    private int userId;
 
     // NewUser constructor
     public AppUser(String firstName, String lastName, String username, String password) {
@@ -50,6 +51,13 @@ public class AppUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }

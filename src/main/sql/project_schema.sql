@@ -8,7 +8,7 @@ create table users(
 	constraint pk_users primary key (user_id)
 );
 
-
+select * from users;
 
 create table transactions(
 	transaction_id serial primary key,
