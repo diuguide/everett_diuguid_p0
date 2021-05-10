@@ -17,7 +17,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void test_checkingSize() {
+    public void test_checkSize() {
         // Arrange
         int expectedSize = 3;
 
@@ -37,7 +37,7 @@ public class LinkedListTest {
         sut.add("test");
 
         // Assert
-        Assert.assertEquals(true, sut.contains("test"));
+        Assert.assertTrue("true", sut.contains("test"));
     }
 
     @Test
@@ -81,5 +81,8 @@ public class LinkedListTest {
         sut.add("one");
         sut.get(2);
     }
-
+    @Test(expected = IllegalArgumentException.class)
+    public void test_addNullValue() {
+        sut.add(null);
+    }
 }

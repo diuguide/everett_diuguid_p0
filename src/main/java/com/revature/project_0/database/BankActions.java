@@ -1,7 +1,5 @@
 package com.revature.project_0.database;
 
-import com.revature.project_0.database.ConnectionFactory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

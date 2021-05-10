@@ -39,7 +39,7 @@ public class TransactionScreen extends Screen{
                     depositAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(depositAmt);
                     BankActions.deposit(dbl, router.currentUser.getUserId());
-                    System.out.println("New Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
+                    System.out.println("Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
                 }
@@ -48,7 +48,7 @@ public class TransactionScreen extends Screen{
                     withdrawAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(withdrawAmt);
                     BankActions.withdraw(dbl, router.currentUser.getUserId());
-                    System.out.println("New Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
+                    System.out.println("Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
                     router.navigate("/transactions");
                     break;
                 }
