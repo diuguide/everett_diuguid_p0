@@ -1,7 +1,7 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
+import com.revature.project_0.services.UserService;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
@@ -9,13 +9,14 @@ import java.io.BufferedReader;
 public class LoginScreen extends Screen {
 
     private BufferedReader consoleReader;
-    private UserDAO loginAuth = new UserDAO();
+    private UserService userService;
     private ScreenRouter router;
 
-    public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {
+    public LoginScreen(BufferedReader consoleReader, ScreenRouter router, UserService userService) {
         super("LoginScreen", "/login");
         this.consoleReader = consoleReader;
         this.router = router;
+        this.userService = userService;
     }
 
     public void render() {
@@ -35,7 +36,7 @@ public class LoginScreen extends Screen {
             password = consoleReader.readLine();
 
             if (username != null && password != null) {
-                AppUser authenticatedUser = loginAuth.authenticateUser(username, password);
+                AppUser authenticatedUser = userService.authenticate(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login Successful!");
                     router.setCurrentUser(authenticatedUser);

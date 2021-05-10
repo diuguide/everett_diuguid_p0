@@ -19,22 +19,5 @@ public class AddUser {
         this.password = newUser.getPassword();
     }
 
-    public void insertRow() {
-        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "INSERT INTO project0.users(first_name, last_name, username, password) VALUES (?,?,?,?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, firstName);
-            pstmt.setString(2, lastName);
-            pstmt.setString(3, username);
-            pstmt.setString(4, password);
-            pstmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 }
