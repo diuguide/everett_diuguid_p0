@@ -1,10 +1,13 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.Exceptions.InvalidRequestException;
+import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.services.UserService;
 import com.revature.project_0.util.ScreenRouter;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 
 public class RegisterScreen extends Screen{
 
@@ -49,10 +52,14 @@ public class RegisterScreen extends Screen{
                 System.out.println("Please enter all fields");
             }
 
-        } catch (Exception e) {
-
+        } catch (UsernameNotAvailable e) {
+            System.out.println("Username Not Available!");
+            router.navigate("/register");
+        } catch (InvalidRequestException e) {
+            System.out.println("Please enter valid data!");
+            router.navigate("/register");
+        } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }

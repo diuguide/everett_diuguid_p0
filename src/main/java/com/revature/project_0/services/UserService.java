@@ -1,6 +1,7 @@
 package com.revature.project_0.services;
 
 import com.revature.project_0.Exceptions.InvalidRequestException;
+import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
 
@@ -12,9 +13,12 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public void register(AppUser newUser) throws InvalidRequestException {
+    public void register(AppUser newUser) throws InvalidRequestException, UsernameNotAvailable {
         if (!isUserValid(newUser)) {
             throw new InvalidRequestException("Please enter valid user information");
+        }
+        if (!userDao.isUsernameAvailable(newUser.getUsername())) {
+            throw new UsernameNotAvailable(("Username taken, please choose another!"));
         }
         userDao.saveUser(newUser);
     }

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
+
     public AppUser authenticateUser(String username, String password) {
         AppUser user = null;
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -53,4 +54,26 @@ public class UserDAO {
         }
 
     }
+
+    public boolean isUsernameAvailable(String username) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            String sql = "select * from project0.users where username = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, username);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return true;
+
+    }
+
+
 }
