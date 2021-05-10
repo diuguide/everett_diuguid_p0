@@ -34,4 +34,23 @@ public class UserDAO {
 
         return user;
     }
+
+    public void saveUser(AppUser newUser) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            String sql = "INSERT INTO project0.users(first_name, last_name, username, password) VALUES (?,?,?,?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, newUser.getFirstName());
+            pstmt.setString(2, newUser.getLastName());
+            pstmt.setString(3, newUser.getUsername());
+            pstmt.setString(4, newUser.getPassword());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
