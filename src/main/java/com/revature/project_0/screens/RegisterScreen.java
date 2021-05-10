@@ -1,6 +1,5 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.database.AddUser;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.services.UserService;
 import com.revature.project_0.util.ScreenRouter;
