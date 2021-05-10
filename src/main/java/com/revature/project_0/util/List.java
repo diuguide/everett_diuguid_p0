@@ -6,5 +6,6 @@ public interface List<T> {
     T get(int index);
     boolean contains(T data);
     int size();
+    int removeByIndex(int index);
 
 }

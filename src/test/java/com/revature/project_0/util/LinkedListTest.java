@@ -54,4 +54,32 @@ public class LinkedListTest {
 
     }
 
+    @Test
+    public void test_removeByIndex() {
+        // Arrange
+        int removedIndex = 0;
+
+        //Act
+        sut.add("one");
+        sut.add("two");
+        sut.add("three");
+
+        // Assert
+        Assert.assertEquals(removedIndex, sut.removeByIndex(0));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_removeByIndexNullElement() {
+        //Act
+        sut.add("one");
+        sut.removeByIndex(2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void test_getNullIndex() {
+        sut.add("one");
+        sut.get(2);
+    }
+
 }

@@ -79,4 +79,22 @@ public class LinkedList<T> implements List<T>{
         }
     }
 
+    @Override
+    public int removeByIndex(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("The index does not exist");
+        }
+        Node<T> runner = head;
+        for (int i = 0; i < size; i++ ) {
+            if (i == index) {
+                runner.nextNode = null;
+                runner.prevNode = null;
+                runner.data = null;
+                return index;
+            }
+            runner = runner.nextNode;
+        }
+        return -1;
+    }
+
 }
