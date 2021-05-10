@@ -7,10 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class BankActions {
     static double balance;
     static LocalDateTime timeStamp = LocalDateTime.now();
+    static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    static String formattedDate;
+
     public static void createAccount(int userId) {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -94,7 +98,7 @@ public class BankActions {
 
     static public void logTransaction(int userId, String type, double amount) {
 
-        // NEED TO ADD DATE TO TRANSACTION
+        formattedDate = timeStamp.format(dateFormat);
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "insert into project0.transactions (user_id, amount, trans_type, transaction_date) values(?, ?, ?, ?)";
@@ -102,7 +106,7 @@ public class BankActions {
             pstmt.setDouble(2, amount);
             pstmt.setInt(1, userId);
             pstmt.setString(3, type);
-            pstmt.setObject(4, timeStamp);
+            pstmt.setObject(4, formattedDate);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

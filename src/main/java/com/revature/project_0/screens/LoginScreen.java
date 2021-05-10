@@ -1,6 +1,6 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.auth.LoginAuth;
+import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.util.ScreenRouter;
 
@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 public class LoginScreen extends Screen {
 
     private BufferedReader consoleReader;
-    private LoginAuth loginAuth = new LoginAuth();
+    private UserDAO loginAuth = new UserDAO();
     private ScreenRouter router;
 
     public LoginScreen(BufferedReader consoleReader, ScreenRouter router) {

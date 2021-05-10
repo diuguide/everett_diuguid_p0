@@ -1,4 +1,4 @@
-package com.revature.project_0.auth;
+package com.revature.project_0.dao;
 
 import com.revature.project_0.database.ConnectionFactory;
 import com.revature.project_0.models.AppUser;
@@ -8,12 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginAuth {
-
+public class UserDAO {
     public AppUser authenticateUser(String username, String password) {
-
         AppUser user = null;
-
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "select * from project0.users where username = ? and password = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
