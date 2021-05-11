@@ -6,9 +6,8 @@ import java.io.BufferedReader;
 
 public class TransactionScreen extends Screen{
 
-    private BufferedReader consoleReader;
-    private ScreenRouter router;
-    private BankActions bankActions;
+    final private BufferedReader consoleReader;
+    final private ScreenRouter router;
 
     public TransactionScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("TransactionScreen", "/transactions");
@@ -19,7 +18,7 @@ public class TransactionScreen extends Screen{
     @Override
     public void render() {
 
-        bankActions = new BankActions(router.getCurrentUser());
+        BankActions bankActions = new BankActions(router.getCurrentUser());
 
         String choice = null;
         String depositAmt = null;
@@ -27,7 +26,7 @@ public class TransactionScreen extends Screen{
 
         System.out.println("Transaction Screen");
         System.out.println("+-----------------+");
-        System.out.println("Balance: $" + bankActions.getBalance());
+        System.out.println("Balance: " + bankActions.formatBalance(bankActions.getBalance()));
         System.out.println("+-----------------+");
         System.out.println("1) Deposit");
         System.out.println("2) Withdraw");

@@ -6,16 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BankActions {
 
     private double balance;
-    private LocalDateTime timeStamp = LocalDateTime.now();
-    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-    private String formattedDate;
-    private int userId;
+    final private LocalDateTime timeStamp = LocalDateTime.now();
+    final private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    final private int userId;
 
     public BankActions(AppUser user) {
         this.userId = user.getUserId();
@@ -38,6 +38,12 @@ public class BankActions {
         }
     }
 
+    public String formatBalance(double balance) {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        String formattedBalance =  currency.format(balance);
+        return formattedBalance;
+    }
+
     public double getBalance() {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -57,7 +63,7 @@ public class BankActions {
 
     }
 
-    public double deposit(double depositAmt){
+    public void deposit(double depositAmt){
 
         double newBalance = getBalance() + depositAmt;
 
@@ -73,16 +79,18 @@ public class BankActions {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         logTransaction("Deposit", depositAmt);
         System.out.println("$" + depositAmt + " deposited to account");
-        return newBalance;
+
     }
 
-    public double withdraw(double withdrawAmt){
+    public void withdraw(double withdrawAmt){
 
         double newBalance = getBalance() - withdrawAmt;
 
         if (newBalance >= 0) {
+
             try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
                 String sql = "update project0.accounts set balance=? where user_id=?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -95,18 +103,19 @@ public class BankActions {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             logTransaction("Withdraw", withdrawAmt);
             System.out.println("$" + withdrawAmt + " withdrawn from account!");
-            return newBalance;
+
         }
+
         System.out.println("Insufficient funds!");
-        return getBalance();
 
     }
 
     public void logTransaction(String type, double amount) {
 
-        formattedDate = timeStamp.format(dateFormat);
+        String formattedDate = timeStamp.format(dateFormat);
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "insert into project0.transactions (user_id, amount, trans_type, transaction_date) values(?, ?, ?, ?)";
