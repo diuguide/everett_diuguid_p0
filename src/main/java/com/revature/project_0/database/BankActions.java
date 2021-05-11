@@ -46,6 +46,7 @@ public class BankActions {
     public double getBalance() {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
             String sql = "select * from project0.accounts where user_id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, userId);
@@ -67,6 +68,7 @@ public class BankActions {
         double newBalance = getBalance() + depositAmt;
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
             String sql = "update project0.accounts set balance=? where user_id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(1, newBalance);
@@ -80,7 +82,7 @@ public class BankActions {
         }
 
         logTransaction("Deposit", depositAmt);
-        System.out.println("$" + depositAmt + " deposited to account");
+        System.out.println(formatBalance(depositAmt) + " deposited to account");
 
     }
 
@@ -91,6 +93,7 @@ public class BankActions {
         if (newBalance >= 0) {
 
             try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
                 String sql = "update project0.accounts set balance=? where user_id=?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setDouble(1, newBalance);
@@ -104,11 +107,13 @@ public class BankActions {
             }
 
             logTransaction("Withdraw", withdrawAmt);
-            System.out.println("$" + withdrawAmt + " withdrawn from account!");
+            System.out.println(formatBalance(withdrawAmt) + " withdrawn from account!");
 
+        } else {
+            System.out.println("Insufficient funds!");
         }
 
-        System.out.println("Insufficient funds!");
+
 
     }
 
@@ -117,6 +122,7 @@ public class BankActions {
         String formattedDate = timeStamp.format(dateFormat);
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
             String sql = "insert into project0.transactions (user_id, amount, trans_type, transaction_date) values(?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(2, amount);
