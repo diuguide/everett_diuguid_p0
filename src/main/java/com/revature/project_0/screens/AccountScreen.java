@@ -1,17 +1,15 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.models.AppUser;
+import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
-
 import java.io.BufferedReader;
-
 import static com.revature.project_0.Driver.app;
 
 public class AccountScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
-    private AppUser currentUser;
+
 
     public AccountScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("AccountScreen", "/account");
@@ -21,7 +19,6 @@ public class AccountScreen extends Screen{
 
     @Override
     public void render() {
-        currentUser = router.getCurrentUser();
 
         try {
             String choice;

@@ -9,6 +9,7 @@ public class NewAccountScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private BankActions bankActions;
 
     public NewAccountScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("NewAccountScreen", "/newAccount");
@@ -18,6 +19,9 @@ public class NewAccountScreen extends Screen{
 
     @Override
     public void render() {
+
+        bankActions = new BankActions(router.getCurrentUser());
+
         try {
             String choice;
 
@@ -31,7 +35,7 @@ public class NewAccountScreen extends Screen{
 
             switch (choice) {
                 case "1": {
-                    BankActions.createAccount(router.currentUser.getUserId());
+                    bankActions.createAccount();
                     System.out.println("Created checking account!");
                     router.navigate("/account");
                 }
