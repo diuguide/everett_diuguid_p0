@@ -62,11 +62,7 @@ public class AppUser {
         this.userId = userId;
     }
 
-    public boolean getHasAccount() {
-        return hasAccount;
-    }
+    public boolean getHasAccount() { return hasAccount; }
 
-    public void setHasAccount() {
-        this.hasAccount = true;
-    }
+    public void setHasAccount() { this.hasAccount = true; }
 }
