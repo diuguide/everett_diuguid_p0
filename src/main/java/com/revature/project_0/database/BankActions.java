@@ -40,8 +40,7 @@ public class BankActions {
 
     public String formatBalance(double balance) {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        String formattedBalance =  currency.format(balance);
-        return formattedBalance;
+        return currency.format(balance);
     }
 
     public double getBalance() {
