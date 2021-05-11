@@ -3,7 +3,13 @@ package com.revature.project_0.services;
 import com.revature.project_0.Exceptions.InvalidRequestException;
 import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.dao.UserDAO;
+import com.revature.project_0.database.ConnectionFactory;
 import com.revature.project_0.models.AppUser;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserService {
 
@@ -35,6 +41,25 @@ public class UserService {
         if (user.getFirstName() == null || user.getFirstName().trim().isEmpty() || user.getFirstName().length() > 25) return false;
         if (user.getLastName() == null || user.getLastName().trim().isEmpty() || user.getLastName().length() > 25) return false;
         return true;
+    }
+
+    public boolean checkForAccount(int userId) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            String sql = "select * from project0.accounts where user_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userId);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
 }

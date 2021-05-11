@@ -44,6 +44,7 @@ public class WelcomeScreen extends Screen {
                     app().setAppRunning(false);
                 }
                 default: {
+                    System.out.println("Invalid Entry");
                     break;
                 }
             }

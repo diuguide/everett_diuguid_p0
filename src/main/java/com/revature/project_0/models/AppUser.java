@@ -8,6 +8,7 @@ public class AppUser {
     private String username;
     private String password;
     private int userId;
+    private boolean hasAccount = false;
 
     // NewUser constructor
     public AppUser(String firstName, String lastName, String username, String password) {
@@ -56,8 +57,12 @@ public class AppUser {
     public int getUserId() {
         return userId;
     }
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
 
+    public boolean getHasAccount() { return hasAccount; }
+
+    public void setHasAccount() { this.hasAccount = true; }
 }

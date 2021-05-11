@@ -39,6 +39,9 @@ public class LoginScreen extends Screen {
                 AppUser authenticatedUser = userService.authenticate(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login Successful!");
+                    if (userService.checkForAccount(authenticatedUser.getUserId())) {
+                        authenticatedUser.setHasAccount();
+                    }
                     router.setCurrentUser(authenticatedUser);
                     router.navigate("/account");
                 } else {

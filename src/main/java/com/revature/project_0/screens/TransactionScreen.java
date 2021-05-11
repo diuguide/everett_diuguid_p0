@@ -4,6 +4,8 @@ import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
 
+import static com.revature.project_0.Driver.app;
+
 public class TransactionScreen extends Screen{
 
     final private BufferedReader consoleReader;
@@ -24,13 +26,17 @@ public class TransactionScreen extends Screen{
         String depositAmt = null;
         String withdrawAmt = null;
 
-        System.out.println("Transaction Screen");
+        System.out.println("Account Details:");
+        System.out.println("+-----------------+");
+        System.out.println("**To Deposit funds select 1**");
+        System.out.println("**To Withdraw funds select 2**");
         System.out.println("+-----------------+");
         System.out.println("Balance: " + bankActions.formatBalance(bankActions.getBalance()));
         System.out.println("+-----------------+");
         System.out.println("1) Deposit");
         System.out.println("2) Withdraw");
-        System.out.println("3) Back to Account screen");
+        System.out.println("3) Exit application");
+
         try {
             System.out.print(">>>>> ");
             choice = consoleReader.readLine();
@@ -53,7 +59,13 @@ public class TransactionScreen extends Screen{
                     break;
                 }
                 case "3": {
-                    router.navigate("/account");
+                    System.out.println("You have been Logged Out!");
+                    app().setAppRunning(false);
+                    break;
+                }
+                default: {
+                    System.out.println("Invalid Entry");
+                    break;
                 }
 
             }
