@@ -66,6 +66,7 @@ public class BankActions {
             e.printStackTrace();
         }
         logTransaction(userId, "Deposit", depositAmt);
+        System.out.println("$" + depositAmt + " deposited to account");
         return newBalance;
     }
 
@@ -87,6 +88,7 @@ public class BankActions {
                 e.printStackTrace();
             }
             logTransaction(userId, "Withdraw", withdrawAmt);
+            System.out.println("$" + withdrawAmt + " withdrawn from account!");
             return newBalance;
         }
         System.out.println("Insufficient funds!");

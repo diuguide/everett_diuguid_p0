@@ -10,12 +10,20 @@ create table users(
 
 select * from users;
 
+delete from users where user_id=8;
+select * from accounts;
+select * from transactions;
+
+select * from transactions where user_id=4;
+
+drop table transactions; 
+
 create table transactions(
 	transaction_id serial primary key,
 	user_id int,
-	account_type varchar(30) not null,
+	trans_type varchar(30) not null,
 	amount numeric,
-	transaction_date timestamp, 
+	transaction_date varchar,
 	
 	constraint fk_transactions foreign key (user_id) references users (user_id) 
 );

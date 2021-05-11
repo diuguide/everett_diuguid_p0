@@ -44,13 +44,12 @@ public class RegisterScreen extends Screen{
             password = consoleReader.readLine();
 
             // Create new user object
-            if (firstName != null && lastName != null && username != null && password != null) {
-                AppUser newUser = new AppUser(firstName, lastName, username, password);
-                userService.register(newUser);
-                router.navigate("/login");
-            } else {
-                System.out.println("Please enter all fields");
-            }
+            AppUser newUser = new AppUser(firstName, lastName, username, password);
+            userService.register(newUser);
+            System.out.println("New Account created!");
+            System.out.println("+------------------+");
+            router.navigate("/login");
+
 
         } catch (UsernameNotAvailable e) {
             System.out.println("Username Not Available!");
