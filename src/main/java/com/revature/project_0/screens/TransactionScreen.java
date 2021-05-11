@@ -71,7 +71,8 @@ public class TransactionScreen extends Screen{
             }
 
         } catch (Exception e) {
-                e.printStackTrace();
-            }
+            System.out.println("Invalid Entry");
+            router.navigate("/transactions");
+        }
     }
 }
