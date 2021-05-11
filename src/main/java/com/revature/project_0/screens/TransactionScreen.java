@@ -8,6 +8,7 @@ public class TransactionScreen extends Screen{
 
     private BufferedReader consoleReader;
     private ScreenRouter router;
+    private BankActions bankActions;
 
     public TransactionScreen(BufferedReader consoleReader, ScreenRouter router) {
         super("TransactionScreen", "/transactions");
@@ -18,13 +19,15 @@ public class TransactionScreen extends Screen{
     @Override
     public void render() {
 
+        bankActions = new BankActions(router.getCurrentUser());
+
         String choice = null;
         String depositAmt = null;
         String withdrawAmt = null;
 
         System.out.println("Transaction Screen");
         System.out.println("+-----------------+");
-        System.out.println("Balance: $" + BankActions.getBalance(router.currentUser.getUserId()));
+        System.out.println("Balance: $" + bankActions.getBalance());
         System.out.println("+-----------------+");
         System.out.println("1) Deposit");
         System.out.println("2) Withdraw");
@@ -38,7 +41,7 @@ public class TransactionScreen extends Screen{
                     System.out.print("Deposit amount: $");
                     depositAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(depositAmt);
-                    BankActions.deposit(dbl, router.currentUser.getUserId());
+                    bankActions.deposit(dbl);
                     router.navigate("/transactions");
                     break;
                 }
@@ -46,7 +49,7 @@ public class TransactionScreen extends Screen{
                     System.out.print("Withdraw amount: $");
                     withdrawAmt = consoleReader.readLine();
                     double dbl = Double.parseDouble(withdrawAmt);
-                    BankActions.withdraw(dbl, router.currentUser.getUserId());
+                    bankActions.withdraw(dbl);
                     router.navigate("/transactions");
                     break;
                 }
