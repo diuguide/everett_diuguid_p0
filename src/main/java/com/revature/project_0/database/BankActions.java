@@ -113,8 +113,6 @@ public class BankActions {
             System.out.println("Insufficient funds!");
         }
 
-
-
     }
 
     public void logTransaction(String type, double amount) {

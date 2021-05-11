@@ -36,6 +36,7 @@ public class NewAccountScreen extends Screen{
             switch (choice) {
                 case "1": {
                     bankActions.createAccount();
+                    router.currentUser.setHasAccount();
                     System.out.println("Created checking account!");
                     router.navigate("/account");
                 }
