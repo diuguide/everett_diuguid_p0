@@ -3,6 +3,15 @@ package com.revature.project_0.util;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Custom LinkedList DataStructure with Iterable
+ *
+ * @author Everett Diuguid
+ * @author Wezley Singleton
+ *
+ * @param <T>
+ */
+
 public class LinkedList<T> implements List<T>, Iterable<T>{
 
     private int size;

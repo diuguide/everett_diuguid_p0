@@ -4,6 +4,12 @@ import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
 import static com.revature.project_0.Driver.app;
 
+/**
+ * Account creation screen.  Checks if user has an account in the database, if not user can create an account, if so user is redirected to transaction/Account Detail screen
+ *
+ * @author Everett Diuguid
+ */
+
 public class AccountScreen extends Screen{
 
     private BufferedReader consoleReader;

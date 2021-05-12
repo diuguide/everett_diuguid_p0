@@ -2,9 +2,13 @@ package com.revature.project_0.screens;
 
 import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
-
 import java.io.BufferedReader;
 
+/**
+ * New Account Screen.  Allows user to create new account
+ *
+ * @author Everett Diuguid
+ */
 public class NewAccountScreen extends Screen{
 
     private BufferedReader consoleReader;

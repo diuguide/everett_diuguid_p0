@@ -2,6 +2,14 @@ package com.revature.project_0;
 
 import com.revature.project_0.util.AppState;
 
+/**
+ * Driver class.  Initializes Application
+ *
+ * @author Everett Diuguid
+ * @author Wezley Singleton
+ *
+ */
+
 public class Driver {
 
     private static AppState app = new AppState();

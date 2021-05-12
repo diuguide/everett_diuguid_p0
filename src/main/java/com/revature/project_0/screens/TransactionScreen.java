@@ -3,9 +3,13 @@ package com.revature.project_0.screens;
 import com.revature.project_0.database.BankActions;
 import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
-
 import static com.revature.project_0.Driver.app;
 
+/**
+ * Account Details screen.  Gives user option to deposit, withdraw, view transactions.  Displays current balance.
+ *
+ * @author Everett Diuguid
+ */
 public class TransactionScreen extends Screen{
 
     final private BufferedReader consoleReader;

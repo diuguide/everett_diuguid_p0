@@ -8,8 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Account service page.  Stores methods for gathering all transaction history
+ *
+ * @author Everett Diuguid
+ */
 public class AccountService {
 
+    // Get all transactions from db based on userId store them to LinkedList for use on transactionHistory screen
     public LinkedList getTransactions(int userId) {
         LinkedList<Transaction> transactionList = new LinkedList<>();
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {

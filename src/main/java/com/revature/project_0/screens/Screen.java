@@ -1,5 +1,12 @@
 package com.revature.project_0.screens;
 
+/**
+ * Abstract Screen class, defines required methods and fields for all screens.
+ *
+ * @author Wezley Singleton
+ * @author Everett Diuguid
+ */
+
 public abstract class Screen {
 
     protected String name;

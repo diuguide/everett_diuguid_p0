@@ -9,6 +9,11 @@ import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * Transaction history screen.  Uses accountService to query all transactions associated with a userId
+ *
+ * @author Everett Diuguid
+ */
 public class TransactionHistory extends Screen{
 
     final private BufferedReader consoleReader;

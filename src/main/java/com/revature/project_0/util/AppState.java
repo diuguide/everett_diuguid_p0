@@ -7,6 +7,12 @@ import com.revature.project_0.services.UserService;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * Main state of application.  Sets appRunning field on intialization.  Intitializes BufferedReader, userDao, userService for use throughout application
+ *
+ * @author Everett Diuguid
+ * @author Wezley Singleton
+ */
 public class AppState {
 
     private ScreenRouter router;

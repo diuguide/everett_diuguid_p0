@@ -1,12 +1,14 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.util.ScreenRouter;
-
-
 import java.io.BufferedReader;
-
 import static com.revature.project_0.Driver.app;
 
+/**
+ * Welcome screen.  Landing page for application.  Gives user option to register, login, or exit application
+ *
+ * @author Everett Diuguid
+ */
 public class WelcomeScreen extends Screen {
 
     private BufferedReader consoleReader;

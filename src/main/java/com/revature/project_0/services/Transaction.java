@@ -1,5 +1,10 @@
 package com.revature.project_0.services;
 
+/**
+ * Transaction object for storing data for single transactions
+ *
+ * @author Everett Diuguid
+ */
 public class Transaction {
 
     private String type;

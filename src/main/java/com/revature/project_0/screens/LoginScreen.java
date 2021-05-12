@@ -3,9 +3,13 @@ package com.revature.project_0.screens;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.services.UserService;
 import com.revature.project_0.util.ScreenRouter;
-
 import java.io.BufferedReader;
 
+/**
+ * Login screen.  Checks user credentials, if validated redirects to account creation screen
+ *
+ * @author Everett Diuguid
+ */
 public class LoginScreen extends Screen {
 
     private BufferedReader consoleReader;

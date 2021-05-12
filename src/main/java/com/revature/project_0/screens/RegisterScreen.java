@@ -5,10 +5,14 @@ import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.services.UserService;
 import com.revature.project_0.util.ScreenRouter;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * Registration Screen.  Gathers newUser data and submits that to userService
+ *
+ * @author Everett Diuguid
+ */
 public class RegisterScreen extends Screen{
 
     private BufferedReader consoleReader;

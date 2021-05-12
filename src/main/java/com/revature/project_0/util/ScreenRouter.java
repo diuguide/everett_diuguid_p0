@@ -3,6 +3,13 @@ package com.revature.project_0.util;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.screens.Screen;
 
+/**
+ * ScreenRouter class.  Creates LinkedList which stores all screens.  Navigates through list to display screens to user.
+ *
+ * @author Everett Diuguid
+ * @author Wezley Singleton
+ *
+ */
 public class ScreenRouter {
 
     // Initializes LinkedList to store active screens
@@ -31,9 +38,5 @@ public class ScreenRouter {
     public AppUser getCurrentUser() {
         return currentUser;
     }
-    public String getCurrentUsername() {
-        return currentUser.getUsername();
-    }
-    public int getCurrentUserId() { return currentUser.getUserId();}
 
 }

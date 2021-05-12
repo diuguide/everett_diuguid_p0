@@ -1,5 +1,10 @@
 package com.revature.project_0.models;
 
+/**
+ * Main AppUser object
+ *
+ * @author Everett Diuguid
+ */
 public class AppUser {
 
     // NewUser login info
