@@ -1,6 +1,10 @@
 package com.revature.project_0.util;
 
+import com.revature.project_0.services.AccountService;
+import com.revature.project_0.services.Transaction;
 import org.junit.*;
+
+import java.sql.SQLOutput;
 
 public class LinkedListTest {
 
@@ -85,4 +89,17 @@ public class LinkedListTest {
     public void test_addNullValue() {
         sut.add(null);
     }
+
+    @Test
+    public void test_transactionLinkedList() {
+        AccountService accountService = new AccountService();
+        LinkedList transactionList = accountService.getTransactions(1);
+        System.out.println(transactionList.size());
+        for(int i = 0; i < transactionList.size(); i++) {
+            Transaction item = (Transaction) transactionList.get(i);
+            System.out.println((i+1) + " " + item.getTransaction_id() + " " + item.getAmount() + " " + item.getType());
+        }
+        Assert.assertNotNull(transactionList);
+    }
+
 }

@@ -1,6 +1,9 @@
 package com.revature.project_0.util;
 
-public class LinkedList<T> implements List<T>{
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedList<T> implements List<T>, Iterable<T>{
 
     private int size;
     private Node<T> head;
@@ -95,6 +98,31 @@ public class LinkedList<T> implements List<T>{
             runner = runner.nextNode;
         }
         return -1;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                T data = null;
+                if(!this.hasNext()) {
+                    throw new NoSuchElementException();
+                }
+
+                data = current.data;
+                current = current.nextNode;
+
+                return data;
+            }
+        };
     }
 
 }
