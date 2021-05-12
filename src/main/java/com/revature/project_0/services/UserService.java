@@ -3,7 +3,7 @@ package com.revature.project_0.services;
 import com.revature.project_0.Exceptions.InvalidRequestException;
 import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.dao.UserDAO;
-import com.revature.project_0.database.ConnectionFactory;
+import com.revature.project_0.util.ConnectionFactory;
 import com.revature.project_0.models.AppUser;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

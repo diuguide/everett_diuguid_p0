@@ -1,6 +1,6 @@
 package com.revature.project_0.dao;
 
-import com.revature.project_0.database.ConnectionFactory;
+import com.revature.project_0.util.ConnectionFactory;
 import com.revature.project_0.models.AppUser;
 
 import java.sql.Connection;

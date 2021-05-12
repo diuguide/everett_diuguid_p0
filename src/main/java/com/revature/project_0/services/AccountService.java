@@ -1,7 +1,8 @@
 package com.revature.project_0.services;
 
 import com.revature.project_0.Exceptions.InvalidInputException;
-import com.revature.project_0.database.ConnectionFactory;
+import com.revature.project_0.util.ConnectionFactory;
+import com.revature.project_0.models.Transaction;
 import com.revature.project_0.util.LinkedList;
 
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package com.revature.project_0.database;
+package com.revature.project_0.util;
 
 import java.io.FileReader;
 import java.io.IOException;

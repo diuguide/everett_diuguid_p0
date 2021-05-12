@@ -1,7 +1,7 @@
 package com.revature.project_0.screens;
 
 import com.revature.project_0.Exceptions.InvalidInputException;
-import com.revature.project_0.database.BankActions;
+import com.revature.project_0.services.BankActions;
 import com.revature.project_0.services.AccountService;
 import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
@@ -80,7 +80,7 @@ public class TransactionScreen extends Screen{
                         }
                         router.navigate("/transactions");
                     } catch (InvalidInputException e) {
-                        System.err.println("Deposit amount must be greater than zero");
+                        System.err.println("Withdraw amount must be greater than zero");
                         router.navigate("/transactions");
                     } catch (NumberFormatException e) {
                         System.err.println("Please Enter a number greater than zero");

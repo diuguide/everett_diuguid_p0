@@ -1,4 +1,4 @@
-package com.revature.project_0.services;
+package com.revature.project_0.models;
 
 /**
  * Transaction object for storing data for single transactions

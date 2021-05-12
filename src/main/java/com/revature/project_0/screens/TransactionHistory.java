@@ -1,8 +1,8 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.database.BankActions;
+import com.revature.project_0.services.BankActions;
 import com.revature.project_0.services.AccountService;
-import com.revature.project_0.services.Transaction;
+import com.revature.project_0.models.Transaction;
 import com.revature.project_0.util.LinkedList;
 import com.revature.project_0.util.ScreenRouter;
 

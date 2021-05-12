@@ -1,6 +1,6 @@
 package com.revature.project_0.screens;
 
-import com.revature.project_0.database.BankActions;
+import com.revature.project_0.services.BankActions;
 import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
 
