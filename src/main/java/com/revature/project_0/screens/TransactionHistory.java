@@ -34,7 +34,7 @@ public class TransactionHistory extends Screen{
         for(int i = 0; i < transactionList.size(); i++) {
 
             Transaction item = (Transaction) transactionList.get(i);
-            System.out.println(item.getTransaction_date() + ": " + bankActions.formatBalance(item.getAmount()) + " " + item.getType());
+            System.out.println(item.getTransaction_date() + " " + item.getType() + " " + bankActions.formatBalance(item.getAmount()));
         }
 
         try {
