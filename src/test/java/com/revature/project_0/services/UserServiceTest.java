@@ -1,8 +1,13 @@
 package com.revature.project_0.services;
 
+import com.revature.project_0.Exceptions.InvalidRequestException;
+import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.*;
+
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class UserServiceTest {
@@ -23,28 +28,42 @@ public class UserServiceTest {
     @Test
     public void test_registerWithValidUser() {
         AppUser user = new AppUser("fake", "fake", "fake", "fake");
+        AppUser expectedResult = new AppUser("fake", "fake", "fake", "fake");
         when(mockUserDao.isUsernameAvailable(anyString())).thenReturn(true);
+        when(mockUserDao.saveUser(any())).thenReturn(expectedResult);
+
+        sut.register(user);
+
+        assertEquals( expectedResult.getFirstName(), user.getFirstName());
     }
 
+    @Test (expected = InvalidRequestException.class)
+    public void test_registerWithInvalidUser() {
+        AppUser user = new AppUser();
 
+        sut.register(user);
+    }
+
+    @Test (expected = UsernameNotAvailable.class)
+    public void test_registerWithExsistingUser() {
+        AppUser user = new AppUser("test", "test", "ediuguid", "password");
+        when(mockUserDao.isUsernameAvailable(anyString())).thenReturn(false);
+
+        sut.register(user);
+    }
+
+    @Test
+    public void test_checkForAccount() {
+        int userId = 1;
+
+        sut.checkForAccount(userId);
+
+        assertTrue(true);
+
+    }
 
 
 
 }
 
-class UserDAOStub extends UserDAO {
-    @Override
-    public AppUser findUserByUsernameAndPassword(String username, String password) {
-        return super.findUserByUsernameAndPassword(username, password);
-    }
 
-    @Override
-    public void saveUser(AppUser newUser) {
-        super.saveUser(newUser);
-    }
-
-    @Override
-    public boolean isUsernameAvailable(String username) {
-        return super.isUsernameAvailable(username);
-    }
-}

@@ -44,7 +44,7 @@ public class UserDAO {
     }
 
     // Save user object to db
-    public void saveUser(AppUser newUser) {
+    public AppUser saveUser(AppUser newUser) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             String sql = "INSERT INTO project0.users(first_name, last_name, username, password) VALUES (?,?,?,?)";
@@ -60,6 +60,8 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return newUser;
 
     }
 

@@ -26,14 +26,14 @@ public class UserService {
     }
 
     // Register new user with AppUser object, check userinput
-    public void register(AppUser newUser) throws InvalidRequestException, UsernameNotAvailable {
+    public AppUser register(AppUser newUser) throws InvalidRequestException, UsernameNotAvailable {
         if (!isUserValid(newUser)) {
             throw new InvalidRequestException("Please enter valid user information");
         }
         if (!userDao.isUsernameAvailable(newUser.getUsername())) {
             throw new UsernameNotAvailable(("Username taken, please choose another!"));
         }
-        userDao.saveUser(newUser);
+        return userDao.saveUser(newUser);
     }
 
     // Check user credentials
