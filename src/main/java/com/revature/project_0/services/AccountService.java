@@ -20,7 +20,7 @@ public class AccountService {
 
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 Transaction transaction = new Transaction();
                 transaction.setTransaction_id(rs.getInt("transaction_id"));
                 transaction.setAmount(rs.getInt("amount"));
