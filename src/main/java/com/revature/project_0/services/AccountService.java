@@ -1,5 +1,6 @@
 package com.revature.project_0.services;
 
+import com.revature.project_0.Exceptions.InvalidInputException;
 import com.revature.project_0.database.ConnectionFactory;
 import com.revature.project_0.util.LinkedList;
 
@@ -40,5 +41,12 @@ public class AccountService {
         }
         return transactionList;
 
+    }
+
+    public boolean checkInput(double input) throws InvalidInputException {
+        if (input < 0) {
+            throw new InvalidInputException("Input values must be greater than zero!");
+        }
+        return true;
     }
 }

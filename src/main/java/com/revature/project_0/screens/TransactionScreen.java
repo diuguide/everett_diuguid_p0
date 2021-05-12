@@ -1,6 +1,8 @@
 package com.revature.project_0.screens;
 
+import com.revature.project_0.Exceptions.InvalidInputException;
 import com.revature.project_0.database.BankActions;
+import com.revature.project_0.services.AccountService;
 import com.revature.project_0.util.ScreenRouter;
 import java.io.BufferedReader;
 import static com.revature.project_0.Driver.app;
@@ -25,6 +27,7 @@ public class TransactionScreen extends Screen{
     public void render() {
 
         BankActions bankActions = new BankActions(router.getCurrentUser());
+        AccountService accountService = new AccountService();
 
         String choice = null;
         String depositAmt = null;
@@ -49,18 +52,40 @@ public class TransactionScreen extends Screen{
             switch (choice) {
                 case "1": {
                     System.out.print("Deposit amount: $");
-                    depositAmt = consoleReader.readLine();
-                    double dbl = Double.parseDouble(depositAmt);
-                    bankActions.deposit(dbl);
-                    router.navigate("/transactions");
+                    try {
+                        depositAmt = consoleReader.readLine();
+                        double dbl = Double.parseDouble(depositAmt);
+                        boolean inputCheck = accountService.checkInput(dbl);
+                        if (inputCheck) {
+                            bankActions.deposit(dbl);
+                        }
+                        router.navigate("/transactions");
+                    } catch (InvalidInputException e) {
+                        System.err.println("Deposit amount must be greater than zero");
+                        router.navigate("/transactions");
+                    } catch (NumberFormatException e) {
+                        System.err.println("Please Enter a number greater than zero");
+                        router.navigate("/transactions");
+                    }
                     break;
                 }
                 case "2": {
                     System.out.print("Withdraw amount: $");
-                    withdrawAmt = consoleReader.readLine();
-                    double dbl = Double.parseDouble(withdrawAmt);
-                    bankActions.withdraw(dbl);
-                    router.navigate("/transactions");
+                    try {
+                        withdrawAmt = consoleReader.readLine();
+                        double dbl = Double.parseDouble(withdrawAmt);
+                        boolean inputCheck = accountService.checkInput(dbl);
+                        if (inputCheck) {
+                            bankActions.withdraw(dbl);
+                        }
+                        router.navigate("/transactions");
+                    } catch (InvalidInputException e) {
+                        System.err.println("Deposit amount must be greater than zero");
+                        router.navigate("/transactions");
+                    } catch (NumberFormatException e) {
+                        System.err.println("Please Enter a number greater than zero");
+                        router.navigate("/transactions");
+                    }
                     break;
                 }
                 case "3": {
@@ -73,6 +98,7 @@ public class TransactionScreen extends Screen{
                 }
                 default: {
                     System.out.println("Invalid Entry");
+                    router.navigate("/transactions");
                     break;
                 }
 

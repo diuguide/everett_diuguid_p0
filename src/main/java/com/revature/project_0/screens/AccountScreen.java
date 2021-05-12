@@ -49,6 +49,7 @@ public class AccountScreen extends Screen{
                     }
                     default: {
                         System.out.println("Invalid Entry");
+                        router.navigate("/account");
                         break;
                     }
 
