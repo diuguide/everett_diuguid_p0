@@ -85,4 +85,5 @@ public class LinkedListTest {
     public void test_addNullValue() {
         sut.add(null);
     }
+
 }
