@@ -7,6 +7,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Connection factory for database queries.  Creates reusable connection to database
+ *
+ * @author Wezley Singleton
+ * @author Everett Diuguid
+ */
+
 public class ConnectionFactory {
 
     private static ConnectionFactory connectionFactory;

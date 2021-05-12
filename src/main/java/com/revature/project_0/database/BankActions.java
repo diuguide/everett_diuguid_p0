@@ -10,6 +10,12 @@ import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * BankActions object.  Contains methods for completing bank transactions
+ *
+ * @author Everett Diuguid
+ */
+
 public class BankActions {
 
     private double balance;
@@ -21,6 +27,7 @@ public class BankActions {
         this.userId = user.getUserId();
     }
 
+    // Adds new account to database
     public void createAccount() {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -38,11 +45,13 @@ public class BankActions {
         }
     }
 
+    // Format balance into currency format
     public String formatBalance(double balance) {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         return currency.format(balance);
     }
 
+    // Retrieve current balance from database
     public double getBalance() {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -63,6 +72,7 @@ public class BankActions {
 
     }
 
+    // Add deposit amount to balance in database
     public void deposit(double depositAmt){
 
         double newBalance = getBalance() + depositAmt;
@@ -85,7 +95,7 @@ public class BankActions {
         System.out.println(formatBalance(depositAmt) + " deposited to account");
 
     }
-
+    // Subtract withdraw amount from balance in database.  If balance goes below zero, returns insufficient funds
     public void withdraw(double withdrawAmt){
 
         double newBalance = getBalance() - withdrawAmt;
@@ -115,6 +125,7 @@ public class BankActions {
 
     }
 
+    // Logs transaction to transaction table
     public void logTransaction(String type, double amount) {
 
         String formattedDate = timeStamp.format(dateFormat);

@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public AppUser authenticate(String username, String password) {
-        AppUser user = userDao.authenticateUser(username, password);
+        AppUser user = userDao.findUserByUsernameAndPassword(username, password);
         return user;
     }
 

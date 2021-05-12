@@ -8,9 +8,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * The user data access object.  Contains db queries used for authenticating an AppUser object for validation
+ *
+ * @author Everett Diuguid
+ */
+
 public class UserDAO {
 
-    public AppUser authenticateUser(String username, String password) {
+    //Query db with username and password
+    public AppUser findUserByUsernameAndPassword(String username, String password) {
         AppUser user = null;
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
             String sql = "select * from project0.users where username = ? and password = ?";
@@ -36,6 +43,7 @@ public class UserDAO {
         return user;
     }
 
+    // Save user object to db
     public void saveUser(AppUser newUser) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
@@ -55,6 +63,7 @@ public class UserDAO {
 
     }
 
+    // Check if username exists in db
     public boolean isUsernameAvailable(String username) {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
