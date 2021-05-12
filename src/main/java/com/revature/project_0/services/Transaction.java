@@ -5,6 +5,7 @@ public class Transaction {
     private String type;
     private int transaction_id;
     private double amount;
+    private String transaction_date;
 
     public Transaction() {
 
@@ -32,5 +33,13 @@ public class Transaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public String getTransaction_date() {
+        return transaction_date;
+    }
+
+    public void setTransaction_date(String transaction_date) {
+        this.transaction_date = transaction_date;
     }
 }

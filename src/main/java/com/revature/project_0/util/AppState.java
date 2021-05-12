@@ -29,7 +29,8 @@ public class AppState {
                 .addScreen(new RegisterScreen(consoleReader, router, userService))
                 .addScreen(new AccountScreen(consoleReader, router))
                 .addScreen(new TransactionScreen(consoleReader, router))
-                .addScreen(new NewAccountScreen(consoleReader, router));
+                .addScreen(new NewAccountScreen(consoleReader, router))
+                .addScreen(new TransactionHistory(consoleReader, router));
 
         System.out.println("Application started");
     }

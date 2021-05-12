@@ -25,6 +25,7 @@ public class AccountService {
                 transaction.setTransaction_id(rs.getInt("transaction_id"));
                 transaction.setAmount(rs.getInt("amount"));
                 transaction.setType(rs.getString("trans_type"));
+                transaction.setTransaction_date(rs.getString("transaction_date"));
                 transactionList.add(transaction);
             }
 

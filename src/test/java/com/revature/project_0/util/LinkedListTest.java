@@ -99,6 +99,7 @@ public class LinkedListTest {
             Transaction item = (Transaction) transactionList.get(i);
             System.out.println((i+1) + " " + item.getTransaction_id() + " " + item.getAmount() + " " + item.getType());
         }
+        Assert.assertNotNull(transactionList);
     }
 
 }
