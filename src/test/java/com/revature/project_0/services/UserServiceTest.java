@@ -4,7 +4,6 @@ import com.revature.project_0.Exceptions.InvalidRequestException;
 import com.revature.project_0.Exceptions.UsernameNotAvailable;
 import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -53,7 +52,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void test_checkForAccount() {
+    public void test_checkForAccountAccountExists() {
         int userId = 1;
 
         sut.checkForAccount(userId);
@@ -61,6 +60,17 @@ public class UserServiceTest {
         assertTrue(true);
 
     }
+
+    @Test
+    public void test_checkForAccountAccountDoesNotExist() {
+        int userId = 100;
+
+        sut.checkForAccount(userId);
+
+        assertFalse(false);
+    }
+
+
 
 
 
