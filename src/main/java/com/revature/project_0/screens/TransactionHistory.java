@@ -51,7 +51,7 @@ public class TransactionHistory extends Screen{
                     break;
                 }
                 default: {
-                    System.out.println("Please enter 1 to return to the Account Details Screen");
+                    router.navigate("/transactionHistory");
                     break;
                 }
             }

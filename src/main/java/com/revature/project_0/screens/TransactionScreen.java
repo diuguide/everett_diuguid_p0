@@ -92,7 +92,6 @@ public class TransactionScreen extends Screen{
                     router.navigate("/transactionHistory");
                 }
                 case "4": {
-                    System.out.println("You have been Logged Out!");
                     app().setAppRunning(false);
                     break;
                 }

@@ -50,6 +50,7 @@ public class NewAccountScreen extends Screen{
                 }
                 default: {
                     System.out.println("Invalid Response");
+                    router.navigate("/newAccount");
                 }
 
             }

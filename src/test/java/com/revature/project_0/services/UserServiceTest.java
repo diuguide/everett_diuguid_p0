@@ -70,7 +70,14 @@ public class UserServiceTest {
         assertFalse(false);
     }
 
+    @Test
+    public void test_isNameValid() {
+        String name = "Everett";
 
+        boolean validate = sut.isValidName(name);
+
+        assertTrue(validate);
+    }
 
 
 

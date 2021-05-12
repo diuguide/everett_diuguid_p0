@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 /**
  * UserService class for validating user input and authenticating usercredentials
@@ -47,9 +48,13 @@ public class UserService {
         if (user == null) return false;
         if (user.getUsername() == null || user.getUsername().trim().isEmpty() || user.getUsername().length() > 20) return false;
         if (user.getPassword() == null || user.getPassword().trim().isEmpty() || user.getPassword().length() > 255) return false;
-        if (user.getFirstName() == null || user.getFirstName().trim().isEmpty() || user.getFirstName().length() > 25) return false;
-        if (user.getLastName() == null || user.getLastName().trim().isEmpty() || user.getLastName().length() > 25) return false;
+        if (user.getFirstName() == null || user.getFirstName().trim().isEmpty() || user.getFirstName().length() > 25 || !isValidName(user.getFirstName())) return false;
+        if (user.getLastName() == null || user.getLastName().trim().isEmpty() || user.getLastName().length() > 25 || !isValidName(user.getLastName())) return false;
         return true;
+    }
+
+    public boolean isValidName(String name) {
+        return Pattern.compile("^[a-zA-Z]{1,25}$").matcher(name).matches();
     }
 
     // Check if user has an account
