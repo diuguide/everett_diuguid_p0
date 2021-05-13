@@ -121,7 +121,7 @@ public class BankActions {
             System.out.println(formatBalance(withdrawAmt) + " withdrawn from account!");
 
         } else {
-            System.out.println("Insufficient funds!");
+            System.err.println("Insufficient funds!");
         }
 
     }

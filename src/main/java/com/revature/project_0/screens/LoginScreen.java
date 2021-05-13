@@ -39,7 +39,6 @@ public class LoginScreen extends Screen {
             System.out.print("Password: ");
             password = consoleReader.readLine();
 
-            if (username != null && password != null) {
                 AppUser authenticatedUser = userService.authenticate(username, password);
                 if (authenticatedUser != null) {
                     System.out.println("Login Successful!");
@@ -49,20 +48,16 @@ public class LoginScreen extends Screen {
                     router.setCurrentUser(authenticatedUser);
                     router.navigate("/account");
                 } else {
-                    System.out.println("Login Failed!");
+                    System.err.println("");
+                    System.err.println("Login Failed!");
+                    System.err.println("");
                 }
-            } else {
-                System.out.println("Please complete all fields");
-            }
-
-
-
-
 
         } catch (Exception e) {
 
             e.printStackTrace();
 
         }
+
     }
 }
