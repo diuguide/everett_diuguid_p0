@@ -4,6 +4,11 @@ import com.revature.project_0.Exceptions.InvalidInputException;
 import com.revature.project_0.util.LinkedList;
 import org.junit.*;
 
+/**
+ * test suite for accountservices
+ *
+ * @author Everett Diuguid
+ */
 public class AccountServiceTest {
 
     private AccountService sut;

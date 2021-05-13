@@ -5,6 +5,11 @@ import com.revature.project_0.models.AppUser;
 import org.junit.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test suite for Bankactions
+ *
+ * @author Everett Diuguid
+ */
 public class BankActionsTest {
 
     private BankActions sut;

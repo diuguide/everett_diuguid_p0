@@ -9,6 +9,11 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Test suite for userservices
+ *
+ * @author Everett Diuguid
+ */
 public class UserServiceTest {
 
     private UserService sut;
