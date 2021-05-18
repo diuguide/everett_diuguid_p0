@@ -30,11 +30,11 @@ public class ConnectionFactory {
 
     // Grab credentials from properties file
     private ConnectionFactory() {
-        try {
-            props.load(new FileReader("src/main/resources/application.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            props.load(new FileReader("../../../../../webapp/WEB-INF/application.properties"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     // If no instance of ConnectionFactory exists, create one
@@ -51,9 +51,9 @@ public class ConnectionFactory {
         try {
 
             conn = DriverManager.getConnection(
-                    props.getProperty("host-url"),
-                    props.getProperty("username"),
-                    props.getProperty("password"));
+                    System.getenv("host-url"),
+                    System.getenv("username"),
+                    System.getenv("password"));
 
         } catch (SQLException e) {
 
