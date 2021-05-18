@@ -1,5 +1,6 @@
 package com.revature.project_0.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.project_0.dao.UserDAO;
 import com.revature.project_0.models.AppUser;
 import com.revature.project_0.services.UserService;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -51,5 +55,33 @@ public class AppUserServlet extends HttpServlet {
         // This will get the PrintWriter associated with the Response.  This PrintWriter will ... write
         //          to the body of the response
         resp.getWriter().print("Hello out there. Your user has been created");
+    }
+
+    // Here we are going to authenticate a user taken from a json in the request body
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // json stands for javascript object notation
+
+        // Read body of the request
+        InputStream json = req.getInputStream();
+
+        // parse json
+        Map<String, Object> jsonMap = new ObjectMapper().readValue(json, HashMap.class);
+        System.out.println(jsonMap);
+
+        // call authenticate with username and password from json
+        AppUser user = userService.authenticate(jsonMap.get("username").toString(), jsonMap.get("password").toString());
+
+        // return appropriate response
+        if(user == null) {
+            resp.getWriter().println("Please check your credentials");
+        } else {
+            resp.getWriter().println("Succesfully Logged In");
+        }
+
+
+
+
+
     }
 }
