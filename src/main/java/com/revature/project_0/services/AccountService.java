@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * Account service page.  Stores methods for gathering all transaction history
@@ -29,6 +30,10 @@ public class AccountService {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                HashMap<String, Object> resultMap = new HashMap<>();
+                java.util.LinkedList<HashMap> taskList = new java.util.LinkedList<>();
+
+
                 Transaction transaction = new Transaction();
                 transaction.setTransaction_id(rs.getInt("transaction_id"));
                 transaction.setAmount(rs.getInt("amount"));

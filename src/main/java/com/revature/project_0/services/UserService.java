@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 /**
@@ -67,6 +68,8 @@ public class UserService {
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
+
+
                 return true;
             }
 
