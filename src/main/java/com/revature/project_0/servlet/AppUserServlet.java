@@ -84,12 +84,7 @@ public class AppUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Redirect, will send client to other servers
-        resp.sendRedirect("https://www.google.com");
-
-        // forward, will send client to to other resources with them knowing.
-        // Will throw error because there is no path /someOtherResources that exists
-        req.getRequestDispatcher("/someOtherResource").forward(req, resp);
-
+        resp.sendRedirect("https://www.reddit.com");
 
     }
 }
